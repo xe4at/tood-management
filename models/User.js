@@ -4,6 +4,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -14,7 +15,7 @@ const userSchema = new Schema({
   todos: [{ title: String, status: String }],
   createdAt: {
     type: Date,
-    default: () => DataTransfer.now(),
+    default: () => Date.now(),
     immutable: true,
   },
 });

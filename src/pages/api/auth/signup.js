@@ -1,7 +1,6 @@
 import connectDB from "../../../../utils/connectDB";
 import User from "../../../../models/User";
 import { hashPassword } from "../../../../utils/auth";
-import { exportTraceState } from "next/dist/trace";
 
 async function handler(req, res) {
   if (req.method !== "POST") return;
@@ -12,13 +11,13 @@ async function handler(req, res) {
     console.log(err);
     return res
       .status(500)
-      .json({ status: "failed", message: "Error in connectig to DB" });
+      .json({ status: "failed", message: "Error in connecting to DB" });
   }
   const { email, password } = req.body;
 
   if (!email || !password) {
     return res.status(422).json({
-      status: "failed  ",
+      status: "failed",
       message: "Invalid data",
     });
   }
@@ -36,7 +35,7 @@ async function handler(req, res) {
   const newUser = await User.create({ email: email, password: hashedPassword });
   console.log(newUser);
 
-  res.status(201).json({ status: "success", message: "Created user!" });
+  res.status(201).json("success");
 }
 
 export default handler;
