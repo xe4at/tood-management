@@ -7,7 +7,7 @@ function Layout({ children }) {
   return (
     <div className="container">
       <header>
-        <p>Botostart Todo App</p>
+        <p>08studio Todo App</p>
       </header>
       <div className="container--main">
         <aside>
