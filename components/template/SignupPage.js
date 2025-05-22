@@ -6,22 +6,14 @@ import { useEffect, useState } from "react";
 function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter();
+
   const { status } = useSession();
 
   useEffect(() => {
-    if (status === "authenticated") {
-      router.replace("/");
-    } else if (status === "unauthenticated") {
-      setIsLoading(false);
-    }
-  }, [status, router]);
-
-  if (isLoading || status === "authenticated") {
-    return null;
-  }
+    if (status === "authenticated") router.replace("/");
+  }, [status]);
 
   const signUpHandler = async () => {
     const res = await fetch("/api/auth/signup", {
@@ -31,14 +23,14 @@ function SignupPage() {
     });
     const data = await res.json();
     console.log(data);
-    if (data === "success") router.push("/signin");
+    if (data.status === "success") router.push("/signin");
   };
 
   return (
     <div className="signin-form">
       <h3>Registration Form</h3>
       <input
-        type="email"
+        type="text"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}

@@ -9,7 +9,7 @@ function RadioButton({ status, setStatus, value, title, children }) {
         type="radio"
         id={value}
         value={value}
-        checked={status == value}
+        checked={status === value}
         onChange={(e) => setStatus(e.target.value)}
       />
     </div>
