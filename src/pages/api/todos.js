@@ -1,6 +1,7 @@
 import connectDB from "../../../utils/connectDB";
 import { getToken } from "next-auth/jwt";
 import User from "../../../models/User";
+import { sortTodos } from "../../../utils/sortTodos";
 
 const secret = process.env.NEXTAUTH_SECRET;
 
@@ -45,6 +46,9 @@ async function handler(req, res) {
     return res
       .status(201)
       .json({ status: "success", message: "Todo created!" });
+  } else if (req.method === "GET") {
+    const sortedData = sortTodos(user.todos);
+    res.status(200).json({ status: "success", data: { todos: sortedData } });
   }
 
   res.status(405).json({ status: "failed", message: "Method not allowed!" });
