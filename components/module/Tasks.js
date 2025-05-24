@@ -3,13 +3,19 @@ import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 
 function Tasks({ data, next, back, fetchTodos }) {
   const changeStatus = async (id, status) => {
-    const res = await fetch("api/todos", {
+    const res = await fetch("/api/todos", {
       method: "PATCH",
-      body: JSON.stringify(id, status),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id, status }),
     });
+
     const data = await res.json();
     if (data.status === "success") fetchTodos();
+    else console.log("PATCH error response:", data);
   };
+  
   return (
     <div className="tasks">
       {data?.map((i) => (
