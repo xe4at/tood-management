@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function AddTodoPage() {
+
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("todo");
 

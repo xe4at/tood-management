@@ -359,3 +359,103 @@ button {
 .signin-form a {
   color: #3f47f4;
 }
+@media (max-width: 1024px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .container--main {
+    flex-direction: column;
+  }
+
+  aside {
+    width: 100%;
+    position: static;
+    border-top-right-radius: 0;
+    padding: 20px;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  .home-page {
+    flex-direction: column;
+  }
+
+  .home-page div {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    font-size: 1.2rem;
+    padding: 15px 10px;
+  }
+
+  header button {
+    font-size: 1rem;
+    padding: 5px 8px;
+  }
+
+  aside p {
+    font-size: 1.1rem;
+  }
+
+  aside li {
+    font-size: 1rem;
+  }
+
+  input {
+    max-width: 100%;
+  }
+
+  .signin-form {
+    width: 90%;
+    padding: 30px;
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    font-size: 1rem;
+  }
+
+  .add-form,
+  .profile-form {
+    padding: 10px;
+  }
+
+  .add-form__input--second div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .add-form__input--second input {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  .tasks .tasks__card {
+    padding: 10px;
+    margin: 15px 10px;
+  }
+
+  .tasks .tasks__card div {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tasks .tasks__card div button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .signin-form {
+    padding: 20px;
+  }
+}
