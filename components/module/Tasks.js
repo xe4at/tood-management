@@ -2,6 +2,14 @@ import { RiMastodonLine } from "react-icons/ri";
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 
 function Tasks({ data, next, back, fetchTodos }) {
+  const changeStatus = async (id, status) => {
+    const res = await fetch("api/todos", {
+      method: "PATCH",
+      body: JSON.stringify(id, status),
+    });
+    const data = await res.json();
+    if (data.status === "success") fetchTodos();
+  };
   return (
     <div className="tasks">
       {data?.map((i) => (
@@ -11,12 +19,18 @@ function Tasks({ data, next, back, fetchTodos }) {
           <h4>{i.title}</h4>
           <div>
             {back ? (
-              <button className="button-back">
+              <button
+                className="button-back"
+                onClick={() => changeStatus(i._id, back)}
+              >
                 <BiLeftArrow /> Back
               </button>
             ) : null}
             {next ? (
-              <button className="button-next">
+              <button
+                className="button-next"
+                onClick={() => changeStatus(i._id, next)}
+              >
                 Next <BiRightArrow />
               </button>
             ) : null}
