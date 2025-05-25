@@ -50,8 +50,13 @@ async function handler(req, res) {
       status: "success",
       data: { name, lastName, email: user.email },
     });
-  } else {
-    res.status(405).json({ status: "failed", message: "Method not allowed" });
+  } else if (req.method === "GET") {
+    res
+      .status(200)
+      .json({
+        status: "success",
+        data: { name: user.name, lastName: user.lastName, email: user.email },
+      });
   }
 }
 
