@@ -1,5 +1,4 @@
 import React from "react";
-import { BiBug } from "react-icons/bi";
 
 function ProfileForm({
   name,
