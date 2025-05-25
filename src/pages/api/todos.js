@@ -2,7 +2,6 @@ import connectDB from "../../../utils/connectDB";
 import { getToken } from "next-auth/jwt";
 import User from "../../../models/User";
 import { sortTodos } from "../../../utils/sortTodos";
-ز
 
 const secret = process.env.NEXTAUTH_SECRET;
 
@@ -35,7 +34,6 @@ async function handler(req, res) {
           .json({ status: "failed", message: "Invalid data!" });
       }
 
-      // اینجا می‌تونی اعتبارسنجی مقدار status هم اضافه کنی
 
       user.todos.push({ title, status });
       await user.save();
